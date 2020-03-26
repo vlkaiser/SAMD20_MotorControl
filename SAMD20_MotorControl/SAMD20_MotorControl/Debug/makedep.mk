@@ -2,6 +2,30 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+src\ASF\sam0\drivers\tc\tc_sam_d_r_h\tc.c
+
+src\ASF\sam0\drivers\wdt\wdt.c
+
+src\ASF\sam0\drivers\wdt\wdt_callback.c
+
+src\ASF\sam0\drivers\tc\tc_interrupt.c
+
+src\ASF\sam0\drivers\events\events_hooks.c
+
+src\ASF\sam0\drivers\events\events_sam_d_r_h\events.c
+
+src\ASF\sam0\drivers\bod\bod_sam_d_r_h\bod.c
+
+src\ASF\sam0\drivers\sercom\sercom.c
+
+src\SERCOM_USART.c
+
+src\ASF\sam0\drivers\sercom\usart\usart.c
+
+src\ASF\sam0\drivers\sercom\usart\usart_interrupt.c
+
+src\ASF\sam0\drivers\sercom\sercom_interrupt.c
+
 src\DC_Motors.c
 
 src\DC_peripherals.c

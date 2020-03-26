@@ -17,6 +17,11 @@
 #include "DC_TypeDefs.h"
 #include "DC_peripherals.h"
 #include "DC_Motors.h"
+#include "SERCOM_USART.h"
+
+
+/* Prototypes */
+void Clear_Sleep_Timer(void);
 
 
 

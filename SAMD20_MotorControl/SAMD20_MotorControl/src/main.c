@@ -32,13 +32,49 @@
 * 						vkaiser			- Initial commit
 *
 ***************************************************************************************************************************/
+//ToDo: USART on NOT SERCOM3
+//TODo: Communicate over terminal
+//ToDo: USART ON SERCOM 3
+//ToDo: Read Encoder
+//ToDo: Report Encoder USART Terminal
+//ToDo: Motor Control (Breakdown)
+
+
 #include "main.h"
+
+uint32_t timer_count;	// Sleep timer
+
+
+/******************************************************************************************************
+ * @fn					- Clear_Sleep_Timer
+ * @brief				- Reset timer_count
+ * @param[in]			- void
+ * @return				- void
+ *
+ * @note				- 
+ ******************************************************************************************************/
+void Clear_Sleep_Timer(void)
+{
+	timer_count = 0;
+}
+
+
+
 
 int main (void)
 {
 	system_init();
 	sys_config();
 
+	Clear_Sleep_Timer();
 
+	uint8_t string[] = "Hello World!\r\n";
+	usart_write_buffer_wait(&usart_instance, string, sizeof(string));
+
+	while(1)
+	{
+		usart_read_buffer_job(&usart_instance, (uint8_t *)ch_buffer, MAX_UART_BUFFER_LENGTH);
+		delay_ms(500);
+	}
 
 }

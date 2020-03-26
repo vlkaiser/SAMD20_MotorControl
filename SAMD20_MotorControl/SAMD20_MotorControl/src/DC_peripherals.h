@@ -15,5 +15,10 @@
 /******************* Prototypes *******************/
 void sys_config(void);
 
+void config_BOD(void);
+void config_GCLK(void);
+void config_WDT(void);
+void config_WDT_Callback(void);
+void watchdog_early_warning_callback(void);
 
 #endif /* DC_PERIPHERALS_H_ */

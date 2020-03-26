@@ -52,6 +52,9 @@
  * running the ASF driver selector tool. Any changes will be discarded.
  */
 
+// From module: BOD - Brown Out Detector
+#include <bod.h>
+
 // From module: Common SAM0 compiler driver
 #include <compiler.h>
 #include <status_codes.h>
@@ -61,6 +64,12 @@
 
 // From module: Delay routines
 #include <delay.h>
+
+// From module: EVSYS - Event System Common
+#include <events.h>
+
+// From module: EVSYS - Event System with interupt hooks support
+#include <events_hooks.h>
 
 // From module: Generic board support
 #include <board.h>
@@ -73,6 +82,14 @@
 
 // From module: Part identification macros
 #include <parts.h>
+
+// From module: SERCOM Callback API
+#include <sercom.h>
+#include <sercom_interrupt.h>
+
+// From module: SERCOM USART - Serial Communications (Callback APIs)
+#include <usart.h>
+#include <usart_interrupt.h>
 
 // From module: SYSTEM - Clock Management for SAMD20
 #include <clock.h>
@@ -92,5 +109,16 @@
 
 // From module: SYSTEM - Reset Management for SAM D20/D21/R21/D09/D10/D11/DA/HA
 #include <reset.h>
+
+// From module: TC - Timer Counter (Callback APIs)
+#include <tc.h>
+#include <tc_interrupt.h>
+
+// From module: USART - Serial interface- SAM implementation for devices with only USART
+#include <serial.h>
+
+// From module: WDT - Watchdog Timer (Callback APIs)
+#include <wdt.h>
+#include <wdt_callback.h>
 
 #endif // ASF_H
