@@ -15,9 +15,10 @@
 #include "string.h"
 
 #include "DC_TypeDefs.h"
-#include "DC_peripherals.h"
-#include "DC_Motors.h"
+#include "GPIO_Peripherals.h"
+#include "Motors_4118S-04SD.h"
 #include "SERCOM_USART.h"
+#include "Encoder_AMT212C.h"
 
 
 /* Prototypes */

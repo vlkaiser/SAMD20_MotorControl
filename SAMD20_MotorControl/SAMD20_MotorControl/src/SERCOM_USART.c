@@ -67,7 +67,7 @@ void config_UART_Callback(void)
  *
  * @note				- Calls UART_Continuous to look for next message
  ******************************************************************************************************/
-static void usart_read_callback(const struct usart_module *const usart_module)
+void usart_read_callback(const struct usart_module *const usart_module)
 {
 	tx_rx_buffer[rx_index] = ch_buffer;
 	tx_rx_buffer[rx_index+1] = 0;		// clear future buffer
@@ -89,7 +89,7 @@ static void usart_read_callback(const struct usart_module *const usart_module)
  *
  * @note				- 
  ******************************************************************************************************/
-static void usart_write_callback(const struct usart_module *const usart_module)
+void usart_write_callback(const struct usart_module *const usart_module)
 {
 	__ASM volatile ("nop");
 }

@@ -113,12 +113,13 @@ C_SRCS +=  \
 ../src/ASF/sam0/drivers/events/events_sam_d_r_h/events.c \
 ../src/ASF/sam0/drivers/bod/bod_sam_d_r_h/bod.c \
 ../src/ASF/sam0/drivers/sercom/sercom.c \
+../src/Encoder_AMT212C.c \
 ../src/SERCOM_USART.c \
 ../src/ASF/sam0/drivers/sercom/usart/usart.c \
 ../src/ASF/sam0/drivers/sercom/usart/usart_interrupt.c \
 ../src/ASF/sam0/drivers/sercom/sercom_interrupt.c \
-../src/DC_Motors.c \
-../src/DC_peripherals.c \
+../src/Motors_4118S-04SD.c \
+../src/GPIO_Peripherals.c \
 ../src/ASF/common2/services/delay/sam0/systick_counter.c \
 ../src/ASF/sam0/drivers/port/port.c \
 ../src/ASF/common2/boards/user_board/init.c \
@@ -149,12 +150,13 @@ src/ASF/sam0/drivers/events/events_hooks.o \
 src/ASF/sam0/drivers/events/events_sam_d_r_h/events.o \
 src/ASF/sam0/drivers/bod/bod_sam_d_r_h/bod.o \
 src/ASF/sam0/drivers/sercom/sercom.o \
+src/Encoder_AMT212C.o \
 src/SERCOM_USART.o \
 src/ASF/sam0/drivers/sercom/usart/usart.o \
 src/ASF/sam0/drivers/sercom/usart/usart_interrupt.o \
 src/ASF/sam0/drivers/sercom/sercom_interrupt.o \
-src/DC_Motors.o \
-src/DC_peripherals.o \
+src/Motors_4118S-04SD.o \
+src/GPIO_Peripherals.o \
 src/ASF/common2/services/delay/sam0/systick_counter.o \
 src/ASF/sam0/drivers/port/port.o \
 src/ASF/common2/boards/user_board/init.o \
@@ -178,12 +180,13 @@ src/ASF/sam0/drivers/events/events_hooks.o \
 src/ASF/sam0/drivers/events/events_sam_d_r_h/events.o \
 src/ASF/sam0/drivers/bod/bod_sam_d_r_h/bod.o \
 src/ASF/sam0/drivers/sercom/sercom.o \
+src/Encoder_AMT212C.o \
 src/SERCOM_USART.o \
 src/ASF/sam0/drivers/sercom/usart/usart.o \
 src/ASF/sam0/drivers/sercom/usart/usart_interrupt.o \
 src/ASF/sam0/drivers/sercom/sercom_interrupt.o \
-src/DC_Motors.o \
-src/DC_peripherals.o \
+src/Motors_4118S-04SD.o \
+src/GPIO_Peripherals.o \
 src/ASF/common2/services/delay/sam0/systick_counter.o \
 src/ASF/sam0/drivers/port/port.o \
 src/ASF/common2/boards/user_board/init.o \
@@ -207,12 +210,13 @@ src/ASF/sam0/drivers/events/events_hooks.d \
 src/ASF/sam0/drivers/events/events_sam_d_r_h/events.d \
 src/ASF/sam0/drivers/bod/bod_sam_d_r_h/bod.d \
 src/ASF/sam0/drivers/sercom/sercom.d \
+src/Encoder_AMT212C.d \
 src/SERCOM_USART.d \
 src/ASF/sam0/drivers/sercom/usart/usart.d \
 src/ASF/sam0/drivers/sercom/usart/usart_interrupt.d \
 src/ASF/sam0/drivers/sercom/sercom_interrupt.d \
-src/DC_Motors.d \
-src/DC_peripherals.d \
+src/Motors_4118S-04SD.d \
+src/GPIO_Peripherals.d \
 src/ASF/common2/services/delay/sam0/systick_counter.d \
 src/ASF/sam0/drivers/port/port.d \
 src/ASF/common2/boards/user_board/init.d \
@@ -236,12 +240,13 @@ src/ASF/sam0/drivers/events/events_hooks.d \
 src/ASF/sam0/drivers/events/events_sam_d_r_h/events.d \
 src/ASF/sam0/drivers/bod/bod_sam_d_r_h/bod.d \
 src/ASF/sam0/drivers/sercom/sercom.d \
+src/Encoder_AMT212C.d \
 src/SERCOM_USART.d \
 src/ASF/sam0/drivers/sercom/usart/usart.d \
 src/ASF/sam0/drivers/sercom/usart/usart_interrupt.d \
 src/ASF/sam0/drivers/sercom/sercom_interrupt.d \
-src/DC_Motors.d \
-src/DC_peripherals.d \
+src/Motors_4118S-04SD.d \
+src/GPIO_Peripherals.d \
 src/ASF/common2/services/delay/sam0/systick_counter.d \
 src/ASF/sam0/drivers/port/port.d \
 src/ASF/common2/boards/user_board/init.d \
@@ -327,6 +332,13 @@ src/ASF/sam0/drivers/sercom/sercom.o: ../src/ASF/sam0/drivers/sercom/sercom.c
 	@echo Finished building: $<
 	
 
+src/Encoder_AMT212C.o: ../src/Encoder_AMT212C.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAMD20J18__ -DDEBUG -DBOARD=USER_BOARD -DARM_MATH_CM0PLUS=true -DSYSTICK_MODE -DUSART_CALLBACK_MODE=true -DEVENTS_INTERRUPT_HOOKS_MODE=true -DTC_ASYNC=true -DWDT_CALLBACK_MODE=true  -I"../src/ASF/common/boards" -I"../src/ASF/sam0/utils" -I"../src/ASF/sam0/utils/header_files" -I"../src/ASF/sam0/utils/preprocessor" -I"../src/ASF/thirdparty/CMSIS/Include" -I"../src/ASF/thirdparty/CMSIS/Lib/GCC" -I"../src/ASF/common/utils" -I"../src/ASF/sam0/utils/cmsis/samd20/include" -I"../src/ASF/sam0/utils/cmsis/samd20/source" -I"../src/ASF/sam0/drivers/system" -I"../src/ASF/sam0/drivers/system/clock/clock_samd20" -I"../src/ASF/sam0/drivers/system/clock" -I"../src/ASF/sam0/drivers/system/interrupt" -I"../src/ASF/sam0/drivers/system/interrupt/system_interrupt_samd20" -I"../src/ASF/sam0/drivers/system/pinmux" -I"../src/ASF/sam0/drivers/system/power" -I"../src/ASF/sam0/drivers/system/power/power_sam_d_r_h" -I"../src/ASF/sam0/drivers/system/reset" -I"../src/ASF/sam0/drivers/system/reset/reset_sam_d_r_h" -I"../src/ASF/common2/boards/user_board" -I"../src" -I"../src/config" -I"../src/ASF/sam0/drivers/port" -I"../src/ASF/common2/services/delay" -I"../src/ASF/common2/services/delay/sam0" -I"../src/ASF/sam0/drivers/sercom" -I"../src/ASF/sam0/drivers/sercom/usart" -I"../src/ASF/common/services/serial" -I"../src/ASF/sam0/drivers/bod" -I"../src/ASF/sam0/drivers/bod/bod_sam_d_r_h" -I"../src/ASF/sam0/drivers/events/events_sam_d_r_h" -I"../src/ASF/sam0/drivers/events" -I"../src/ASF/sam0/drivers/tc" -I"../src/ASF/sam0/drivers/tc/tc_sam_d_r_h" -I"../src/ASF/sam0/drivers/wdt"  -O1 -fdata-sections -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -pipe -fno-strict-aliasing -Wall -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -std=gnu99 -ffunction-sections -fdata-sections -Wchar-subscripts -Wcomment -Wformat=2 -Wimplicit-int -Wmain -Wparentheses -Wsequence-point -Wreturn-type -Wswitch -Wtrigraphs -Wunused -Wuninitialized -Wunknown-pragmas -Wfloat-equal -Wundef -Wshadow -Wbad-function-cast -Wwrite-strings -Wsign-compare -Waggregate-return  -Wmissing-declarations -Wformat -Wmissing-format-attribute -Wno-deprecated-declarations -Wpacked -Wredundant-decls -Wnested-externs -Wlong-long -Wunreachable-code -Wcast-align --param max-inline-insns-single=500 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 src/SERCOM_USART.o: ../src/SERCOM_USART.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
@@ -355,14 +367,14 @@ src/ASF/sam0/drivers/sercom/sercom_interrupt.o: ../src/ASF/sam0/drivers/sercom/s
 	@echo Finished building: $<
 	
 
-src/DC_Motors.o: ../src/DC_Motors.c
+src/Motors_4118S-04SD.o: ../src/Motors_4118S-04SD.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAMD20J18__ -DDEBUG -DBOARD=USER_BOARD -DARM_MATH_CM0PLUS=true -DSYSTICK_MODE -DUSART_CALLBACK_MODE=true -DEVENTS_INTERRUPT_HOOKS_MODE=true -DTC_ASYNC=true -DWDT_CALLBACK_MODE=true  -I"../src/ASF/common/boards" -I"../src/ASF/sam0/utils" -I"../src/ASF/sam0/utils/header_files" -I"../src/ASF/sam0/utils/preprocessor" -I"../src/ASF/thirdparty/CMSIS/Include" -I"../src/ASF/thirdparty/CMSIS/Lib/GCC" -I"../src/ASF/common/utils" -I"../src/ASF/sam0/utils/cmsis/samd20/include" -I"../src/ASF/sam0/utils/cmsis/samd20/source" -I"../src/ASF/sam0/drivers/system" -I"../src/ASF/sam0/drivers/system/clock/clock_samd20" -I"../src/ASF/sam0/drivers/system/clock" -I"../src/ASF/sam0/drivers/system/interrupt" -I"../src/ASF/sam0/drivers/system/interrupt/system_interrupt_samd20" -I"../src/ASF/sam0/drivers/system/pinmux" -I"../src/ASF/sam0/drivers/system/power" -I"../src/ASF/sam0/drivers/system/power/power_sam_d_r_h" -I"../src/ASF/sam0/drivers/system/reset" -I"../src/ASF/sam0/drivers/system/reset/reset_sam_d_r_h" -I"../src/ASF/common2/boards/user_board" -I"../src" -I"../src/config" -I"../src/ASF/sam0/drivers/port" -I"../src/ASF/common2/services/delay" -I"../src/ASF/common2/services/delay/sam0" -I"../src/ASF/sam0/drivers/sercom" -I"../src/ASF/sam0/drivers/sercom/usart" -I"../src/ASF/common/services/serial" -I"../src/ASF/sam0/drivers/bod" -I"../src/ASF/sam0/drivers/bod/bod_sam_d_r_h" -I"../src/ASF/sam0/drivers/events/events_sam_d_r_h" -I"../src/ASF/sam0/drivers/events" -I"../src/ASF/sam0/drivers/tc" -I"../src/ASF/sam0/drivers/tc/tc_sam_d_r_h" -I"../src/ASF/sam0/drivers/wdt"  -O1 -fdata-sections -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -pipe -fno-strict-aliasing -Wall -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -std=gnu99 -ffunction-sections -fdata-sections -Wchar-subscripts -Wcomment -Wformat=2 -Wimplicit-int -Wmain -Wparentheses -Wsequence-point -Wreturn-type -Wswitch -Wtrigraphs -Wunused -Wuninitialized -Wunknown-pragmas -Wfloat-equal -Wundef -Wshadow -Wbad-function-cast -Wwrite-strings -Wsign-compare -Waggregate-return  -Wmissing-declarations -Wformat -Wmissing-format-attribute -Wno-deprecated-declarations -Wpacked -Wredundant-decls -Wnested-externs -Wlong-long -Wunreachable-code -Wcast-align --param max-inline-insns-single=500 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-src/DC_peripherals.o: ../src/DC_peripherals.c
+src/GPIO_Peripherals.o: ../src/GPIO_Peripherals.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAMD20J18__ -DDEBUG -DBOARD=USER_BOARD -DARM_MATH_CM0PLUS=true -DSYSTICK_MODE -DUSART_CALLBACK_MODE=true -DEVENTS_INTERRUPT_HOOKS_MODE=true -DTC_ASYNC=true -DWDT_CALLBACK_MODE=true  -I"../src/ASF/common/boards" -I"../src/ASF/sam0/utils" -I"../src/ASF/sam0/utils/header_files" -I"../src/ASF/sam0/utils/preprocessor" -I"../src/ASF/thirdparty/CMSIS/Include" -I"../src/ASF/thirdparty/CMSIS/Lib/GCC" -I"../src/ASF/common/utils" -I"../src/ASF/sam0/utils/cmsis/samd20/include" -I"../src/ASF/sam0/utils/cmsis/samd20/source" -I"../src/ASF/sam0/drivers/system" -I"../src/ASF/sam0/drivers/system/clock/clock_samd20" -I"../src/ASF/sam0/drivers/system/clock" -I"../src/ASF/sam0/drivers/system/interrupt" -I"../src/ASF/sam0/drivers/system/interrupt/system_interrupt_samd20" -I"../src/ASF/sam0/drivers/system/pinmux" -I"../src/ASF/sam0/drivers/system/power" -I"../src/ASF/sam0/drivers/system/power/power_sam_d_r_h" -I"../src/ASF/sam0/drivers/system/reset" -I"../src/ASF/sam0/drivers/system/reset/reset_sam_d_r_h" -I"../src/ASF/common2/boards/user_board" -I"../src" -I"../src/config" -I"../src/ASF/sam0/drivers/port" -I"../src/ASF/common2/services/delay" -I"../src/ASF/common2/services/delay/sam0" -I"../src/ASF/sam0/drivers/sercom" -I"../src/ASF/sam0/drivers/sercom/usart" -I"../src/ASF/common/services/serial" -I"../src/ASF/sam0/drivers/bod" -I"../src/ASF/sam0/drivers/bod/bod_sam_d_r_h" -I"../src/ASF/sam0/drivers/events/events_sam_d_r_h" -I"../src/ASF/sam0/drivers/events" -I"../src/ASF/sam0/drivers/tc" -I"../src/ASF/sam0/drivers/tc/tc_sam_d_r_h" -I"../src/ASF/sam0/drivers/wdt"  -O1 -fdata-sections -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -pipe -fno-strict-aliasing -Wall -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -std=gnu99 -ffunction-sections -fdata-sections -Wchar-subscripts -Wcomment -Wformat=2 -Wimplicit-int -Wmain -Wparentheses -Wsequence-point -Wreturn-type -Wswitch -Wtrigraphs -Wunused -Wuninitialized -Wunknown-pragmas -Wfloat-equal -Wundef -Wshadow -Wbad-function-cast -Wwrite-strings -Wsign-compare -Waggregate-return  -Wmissing-declarations -Wformat -Wmissing-format-attribute -Wno-deprecated-declarations -Wpacked -Wredundant-decls -Wnested-externs -Wlong-long -Wunreachable-code -Wcast-align --param max-inline-insns-single=500 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

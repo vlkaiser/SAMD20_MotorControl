@@ -73,8 +73,12 @@ int main (void)
 
 	while(1)
 	{
-		usart_read_buffer_job(&usart_instance, (uint8_t *)ch_buffer, MAX_UART_BUFFER_LENGTH);
+
+		usart_read_buffer_job(&usart_instance, &ch_buffer, MAX_UART_BUFFER_LENGTH);
 		delay_ms(500);
+		UART_Continuous();
+
+
 	}
 
 }

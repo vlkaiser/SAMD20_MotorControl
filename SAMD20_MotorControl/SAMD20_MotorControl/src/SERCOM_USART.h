@@ -42,8 +42,11 @@ BOOL USART_data_available;
 
 void config_UART(void);
 void config_UART_Callback(void);
-static void usart_read_callback(const struct usart_module *const usart_module);
-static void usart_write_callback(const struct usart_module *const usart_module);
+//static void usart_read_callback(const struct usart_module *const usart_module);
+//static void usart_write_callback(const struct usart_module *const usart_module);
+void usart_read_callback(const struct usart_module *const usart_module);
+void usart_write_callback(const struct usart_module *const usart_module);
+
 void UART_Continuous(void);
 
 
