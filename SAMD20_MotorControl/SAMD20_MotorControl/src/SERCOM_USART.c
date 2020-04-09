@@ -19,6 +19,9 @@ BOOL start_msg = FALSE;
  ******************************************************************************************************/
 void config_UART(void)
 {
+	uint8_t statusMsg[] = "Configuring Terminal UART....\r\n";
+	writeStr(statusMsg, sizeof(statusMsg));			//uart debug statement
+
 	struct usart_config config_usart;
 	usart_get_config_defaults(&config_usart);
 
@@ -50,6 +53,9 @@ void config_UART(void)
  ******************************************************************************************************/
 void config_UART_Callback(void)
 {
+	uint8_t statusMsg[] = "Configuring UART Callbacks....\r\n";
+	writeStr(statusMsg, sizeof(statusMsg));			//uart debug statement
+
 	usart_register_callback(&usart_instance, (usart_callback_t) usart_write_callback, USART_CALLBACK_BUFFER_TRANSMITTED);
 	usart_register_callback(&usart_instance, (usart_callback_t) usart_read_callback, USART_CALLBACK_BUFFER_RECEIVED);
 	usart_enable_callback(&usart_instance, USART_CALLBACK_BUFFER_TRANSMITTED);

@@ -37,6 +37,7 @@ void config_GPIO(void)
 		struct port_config pin_conf;
 		port_get_config_defaults(&pin_conf);
 
+		pin_conf.direction  = PORT_PIN_DIR_OUTPUT;
 		pin_conf.input_pull = PORT_PIN_PULL_DOWN;
 		port_pin_set_config(STATUSLED_GREEN, &pin_conf);
 		port_pin_set_config(STATUSLED_ORANGE, &pin_conf);
@@ -149,7 +150,22 @@ void config_WDT_Callback(void)
  ******************************************************************************************************/
 void sys_config(void)
 {
-	SysTick_Config(system_gclk_gen_get_hz(GCLK_GENERATOR_0));
+ 	/*Configure system tick to generate periodic interrupts */
+ 	SysTick_Config(system_gclk_gen_get_hz(GCLK_GENERATOR_0));
+
+	// Initialize UART - Terminal Debug (Debug On/Off in user_board.h)
+	#ifdef DEBUG_WITH_UART
+		config_UART();
+	#endif
+
+	// Config / Initialize Modules
+	config_GPIO();
+	//config_encUART();
+	//config_encoder();
+	//config_Motors();
+
+	config_UART_Callback();		//Terminal UART, Encoder UART
+
 	delay_init();
 
 	// Initialize EEPROM
@@ -157,12 +173,14 @@ void sys_config(void)
 	//config_BOD();
 	
 	// Initialize WDT	
-	config_GCLK();
-	config_WDT();
-	config_WDT_Callback();
+	//config_GCLK();
+	//config_WDT();
+	//config_WDT_Callback();
 	
 	// Initialize Timer
 	//configure_timer();	
+
+	//Clear_Sleep_Timer();
 
 	system_interrupt_enable_global();
 	

@@ -41,6 +41,7 @@
 
 
 #include "main.h"
+#include "stdio.h"
 
 uint32_t timer_count;	// Sleep timer
 
@@ -82,63 +83,53 @@ void Clear_Sleep_Timer(void)
  * @note				- 
  ******************************************************************************************************/
 // Debug Status Messages 
-uint8_t init[] = "Initializing...\r\n";
-uint8_t statusCheck[] = "Hello World!\r\n";
 
+uint8_t statusCheck[] = "Hello World!\r\n";
+uint8_t init[] = "Initializing...\r\n";
 int main (void)
 {
 	system_init();
 	sys_config();
-
-	// Initialize UART - Terminal Debug (Debug On/Off in user_board.h)
-	#ifdef DEBUG_WITH_UART
-		config_UART();
-		config_UART_Callback();
-
-		writeStr(init, sizeof(init));			//uart debug statement
-	#endif
-
-	// Config / Initialize Modules
-	config_GPIO();
-	//config_encUART();
-	//config_encoder();
-	//config_Motors();
-
-	Clear_Sleep_Timer();
-
-	writeStr(statusCheck, sizeof(init));
+	writeStr(init, sizeof(init));			//uart debug statement
 
 	port_pin_set_output_level(STATUSLED_GREEN, TRUE);
 	port_pin_set_output_level(STATUSLED_GREEN, FALSE);
 	port_pin_set_output_level(STATUSLED_ORANGE, TRUE);
+
+	writeStr(statusCheck, sizeof(init));
 	
-	int i = 0;
+	__vo int i = 0;
+	uint8_t loopCnt[] = "1\r\n";
+	//uint8_t statusMsg[] = "OK\r\n";
+	uint8_t statusReset[] = "Reset Counter\r\n";
+	//uint8_t statusLoop[] = "Finished loop\r\n";
 
 	while(1)
 	{
 		port_pin_set_output_level(STATUSLED_ORANGE, TRUE);
-		usart_read_buffer_job(&usart_instance, &ch_buffer, MAX_UART_BUFFER_LENGTH);
 		delay_ms(500);
 		port_pin_set_output_level(STATUSLED_ORANGE, FALSE);
 		port_pin_set_output_level(STATUSLED_GREEN, TRUE);
-		UART_Continuous();
-		delay_ms(500);
-		port_pin_set_output_level(STATUSLED_GREEN, FALSE);
 
+		delay_ms(500);		// problem child
+		port_pin_set_output_level(STATUSLED_GREEN, FALSE);
+		
+		// Count Loops
+		loopCnt[0] = i + '0';
+
+		writeStr(loopCnt, sizeof(loopCnt));		
 		i++;
-		/*
-		#ifdef YES_UART
-			string = "Loop: ";
-			string[7] = (int)i;
-			usart_write_buffer_wait(&usart_instance, string, sizeof(string));
-		#endif
-		*/
+		if (i > 150) 
+		{
+			i = 0;
+			for (int x = 0; x < 4; x++)
+			{
+				loopCnt[x] = 0;
+			}
+			writeStr(statusReset, sizeof(statusReset));
+		}
+
 	}
 
-	/*
-	#ifdef YES_UART
-		*string = "Shutting Down....\r\n";
-		usart_write_buffer_wait(&usart_instance, string, sizeof(string));
-	#endif
-	*/
+
 }
