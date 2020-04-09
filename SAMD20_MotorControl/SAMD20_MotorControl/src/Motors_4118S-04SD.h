@@ -11,7 +11,7 @@
 
 #include "main.h"
 
-void configMotors(void);
+ void config_Motors(void);
 //void motorCW(int NumSpeed);
 
 

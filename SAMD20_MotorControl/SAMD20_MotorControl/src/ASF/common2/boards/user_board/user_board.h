@@ -33,7 +33,9 @@ extern "C" {
 void system_board_init(void);
 
 	/** Name string macro */
-	#define BOARD_NAME                "USER_BOARD"
+	#define BOARD_NAME				"USER_BOARD"
+
+	#define	DEBUG_WITH_UART				"YES UART"
 
 	/** @} */
 
@@ -86,8 +88,10 @@ void system_board_init(void);
 	#define	CHA_ENC						PIN_PB02
 	#define	CHB_ENC						PIN_PB03
 
-	#define PBTN						PIN_PA18
-	#define STATUSLED					PIN_PA19
+	//#define PBTN						PIN_PA18
+	//#define STATUSLED					PIN_PA19
+	#define STATUSLED_GREEN				PIN_PA19
+	#define STATUSLED_ORANGE			PIN_PA18
 	#define LIMIT_SW_PIN				PIN_PB09
 	
 	//I2C STRAP PINS

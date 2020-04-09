@@ -9,37 +9,27 @@
 
 
 /******************************************************************************************************
- * @fn					- configMotors()
+ * @fn					- config_Motors()
  * @brief				- Port/pin config for motor driver and encoder signals, pushbutton, status led
  * @param[in]			- void
  * @return				- void
  *
  * @note				- called from main.c - test 
  ******************************************************************************************************/
- void configMotors(void)
+ void config_Motors(void)
  {
+
+	uint8_t statusMsg[] = "Configuring Motors....\r\n";
+	writeStr(statusMsg, sizeof(statusMsg));			//uart debug statement
+
  	struct port_config pin_conf;
 	port_get_config_defaults(&pin_conf);
 	
-	/* TODO: ConfigMotors for Motor Control Board */
-
-		pin_conf.direction  = PORT_PIN_DIR_OUTPUT;
-		pin_conf.input_pull = PORT_PIN_PULL_NONE;
-		port_pin_set_config(DIR_PIN, &pin_conf);
-		port_pin_set_config(PLS_PIN, &pin_conf);
-
-		pin_conf.input_pull = PORT_PIN_PULL_DOWN;
-		port_pin_set_config(STATUSLED, &pin_conf);
-		
-		pin_conf.direction  = PORT_PIN_DIR_INPUT;
-		pin_conf.input_pull = PORT_PIN_PULL_UP;
-		port_pin_set_config(CHA_ENC, &pin_conf);
-		port_pin_set_config(CHB_ENC, &pin_conf);
-
-		pin_conf.direction  = PORT_PIN_DIR_INPUT;
-		pin_conf.input_pull = PORT_PIN_PULL_DOWN;
-		port_pin_set_config(PBTN, &pin_conf);
-
+	/* TODO: Config Motors for Motor Control Board */
+	pin_conf.direction  = PORT_PIN_DIR_OUTPUT;
+	pin_conf.input_pull = PORT_PIN_PULL_NONE;
+	port_pin_set_config(DIR_PIN, &pin_conf);
+	port_pin_set_config(PLS_PIN, &pin_conf);
 
 	//TODO: Expand Daughter Card Motor Config
 	port_pin_set_output_level(DIR_PIN, LOW);

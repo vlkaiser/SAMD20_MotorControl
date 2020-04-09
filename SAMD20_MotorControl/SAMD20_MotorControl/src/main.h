@@ -13,6 +13,7 @@
 #include "user_board.h"
 #include "stdio.h"
 #include "string.h"
+#include "Ascii2Hex.h"
 
 #include "DC_TypeDefs.h"
 #include "GPIO_Peripherals.h"
@@ -22,6 +23,7 @@
 
 
 /* Prototypes */
+void writeStr(uint8_t *ptr, uint8_t len);
 void Clear_Sleep_Timer(void);
 
 

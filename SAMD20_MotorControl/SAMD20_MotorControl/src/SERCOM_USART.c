@@ -15,27 +15,29 @@ BOOL start_msg = FALSE;
  * @param[in]			- void
  * @return				- void
  *
- * @note				- ToDo: Is SERCOM3  OK for this, or will it interfere with i2c?
+ * @note				- ToDo: Is SERCOM4  OK for this, or will it interfere with i2c?
  ******************************************************************************************************/
 void config_UART(void)
 {
 	struct usart_config config_usart;
 	usart_get_config_defaults(&config_usart);
 
-	config_usart.baudrate    = 115200;						// boosted this above 115200 to overcome a ~10% latency issue
-	config_usart.mux_setting = USART_RX_3_TX_2_XCK_3;
-	config_usart.pinmux_pad0 = PINMUX_UNUSED;
-	config_usart.pinmux_pad1 = PINMUX_UNUSED;
-	config_usart.pinmux_pad2 = PINMUX_PA24C_SERCOM3_PAD2;	// PA24 = TX
-	config_usart.pinmux_pad3 = PINMUX_PA25C_SERCOM3_PAD3;	// PA25 = RX
+	config_usart.baudrate    = 9600;						
+	config_usart.mux_setting = USART_RX_1_TX_0_XCK_1;
+	config_usart.pinmux_pad0 = PINMUX_PB08D_SERCOM4_PAD0;	// PB08 = TX
+	config_usart.pinmux_pad1 = PINMUX_PB09D_SERCOM4_PAD1;	// PB09 = RX
+	config_usart.pinmux_pad2 = PINMUX_UNUSED;
+	config_usart.pinmux_pad3 = PINMUX_UNUSED;
 	
-	while (usart_init(&usart_instance, SERCOM3, &config_usart) != STATUS_OK)
+	while (usart_init(&usart_instance, SERCOM4, &config_usart) != STATUS_OK)
 	{
 		__ASM volatile ("nop");
 	}
 
 	usart_enable(&usart_instance);
 }
+
+
 
 
  /******************************************************************************************************
@@ -106,3 +108,4 @@ void UART_Continuous(void)
 {
 	usart_read_buffer_job(&usart_instance, &ch_buffer, 1);
 }
+

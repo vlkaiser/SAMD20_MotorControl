@@ -2,6 +2,8 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+src\Ascii2Hex.c
+
 src\ASF\sam0\drivers\tc\tc_sam_d_r_h\tc.c
 
 src\ASF\sam0\drivers\wdt\wdt.c

@@ -105,6 +105,7 @@ SUBDIRS :=  \
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../src/Ascii2Hex.c \
 ../src/ASF/sam0/drivers/tc/tc_sam_d_r_h/tc.c \
 ../src/ASF/sam0/drivers/wdt/wdt.c \
 ../src/ASF/sam0/drivers/wdt/wdt_callback.c \
@@ -142,6 +143,7 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+src/Ascii2Hex.o \
 src/ASF/sam0/drivers/tc/tc_sam_d_r_h/tc.o \
 src/ASF/sam0/drivers/wdt/wdt.o \
 src/ASF/sam0/drivers/wdt/wdt_callback.o \
@@ -172,6 +174,7 @@ src/ASF/sam0/utils/syscalls/gcc/syscalls.o \
 src/main.o
 
 OBJS_AS_ARGS +=  \
+src/Ascii2Hex.o \
 src/ASF/sam0/drivers/tc/tc_sam_d_r_h/tc.o \
 src/ASF/sam0/drivers/wdt/wdt.o \
 src/ASF/sam0/drivers/wdt/wdt_callback.o \
@@ -202,6 +205,7 @@ src/ASF/sam0/utils/syscalls/gcc/syscalls.o \
 src/main.o
 
 C_DEPS +=  \
+src/Ascii2Hex.d \
 src/ASF/sam0/drivers/tc/tc_sam_d_r_h/tc.d \
 src/ASF/sam0/drivers/wdt/wdt.d \
 src/ASF/sam0/drivers/wdt/wdt_callback.d \
@@ -232,6 +236,7 @@ src/ASF/sam0/utils/syscalls/gcc/syscalls.d \
 src/main.d
 
 C_DEPS_AS_ARGS +=  \
+src/Ascii2Hex.d \
 src/ASF/sam0/drivers/tc/tc_sam_d_r_h/tc.d \
 src/ASF/sam0/drivers/wdt/wdt.d \
 src/ASF/sam0/drivers/wdt/wdt_callback.d \
@@ -276,6 +281,13 @@ LINKER_SCRIPT_DEP+=  \
 
 
 # AVR32/GNU C Compiler
+src/Ascii2Hex.o: ../src/Ascii2Hex.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAMD20J18__ -DDEBUG -DBOARD=USER_BOARD -DARM_MATH_CM0PLUS=true -DSYSTICK_MODE -DUSART_CALLBACK_MODE=true -DEVENTS_INTERRUPT_HOOKS_MODE=true -DTC_ASYNC=true -DWDT_CALLBACK_MODE=true  -I"../src/ASF/common/boards" -I"../src/ASF/sam0/utils" -I"../src/ASF/sam0/utils/header_files" -I"../src/ASF/sam0/utils/preprocessor" -I"../src/ASF/thirdparty/CMSIS/Include" -I"../src/ASF/thirdparty/CMSIS/Lib/GCC" -I"../src/ASF/common/utils" -I"../src/ASF/sam0/utils/cmsis/samd20/include" -I"../src/ASF/sam0/utils/cmsis/samd20/source" -I"../src/ASF/sam0/drivers/system" -I"../src/ASF/sam0/drivers/system/clock/clock_samd20" -I"../src/ASF/sam0/drivers/system/clock" -I"../src/ASF/sam0/drivers/system/interrupt" -I"../src/ASF/sam0/drivers/system/interrupt/system_interrupt_samd20" -I"../src/ASF/sam0/drivers/system/pinmux" -I"../src/ASF/sam0/drivers/system/power" -I"../src/ASF/sam0/drivers/system/power/power_sam_d_r_h" -I"../src/ASF/sam0/drivers/system/reset" -I"../src/ASF/sam0/drivers/system/reset/reset_sam_d_r_h" -I"../src/ASF/common2/boards/user_board" -I"../src" -I"../src/config" -I"../src/ASF/sam0/drivers/port" -I"../src/ASF/common2/services/delay" -I"../src/ASF/common2/services/delay/sam0" -I"../src/ASF/sam0/drivers/sercom" -I"../src/ASF/sam0/drivers/sercom/usart" -I"../src/ASF/common/services/serial" -I"../src/ASF/sam0/drivers/bod" -I"../src/ASF/sam0/drivers/bod/bod_sam_d_r_h" -I"../src/ASF/sam0/drivers/events/events_sam_d_r_h" -I"../src/ASF/sam0/drivers/events" -I"../src/ASF/sam0/drivers/tc" -I"../src/ASF/sam0/drivers/tc/tc_sam_d_r_h" -I"../src/ASF/sam0/drivers/wdt"  -O1 -fdata-sections -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -pipe -fno-strict-aliasing -Wall -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -std=gnu99 -ffunction-sections -fdata-sections -Wchar-subscripts -Wcomment -Wformat=2 -Wimplicit-int -Wmain -Wparentheses -Wsequence-point -Wreturn-type -Wswitch -Wtrigraphs -Wunused -Wuninitialized -Wunknown-pragmas -Wfloat-equal -Wundef -Wshadow -Wbad-function-cast -Wwrite-strings -Wsign-compare -Waggregate-return  -Wmissing-declarations -Wformat -Wmissing-format-attribute -Wno-deprecated-declarations -Wpacked -Wredundant-decls -Wnested-externs -Wlong-long -Wunreachable-code -Wcast-align --param max-inline-insns-single=500 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 src/ASF/sam0/drivers/tc/tc_sam_d_r_h/tc.o: ../src/ASF/sam0/drivers/tc/tc_sam_d_r_h/tc.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1

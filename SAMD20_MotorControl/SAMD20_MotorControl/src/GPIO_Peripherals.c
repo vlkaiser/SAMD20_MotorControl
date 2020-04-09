@@ -5,10 +5,9 @@
  *  Author: VKaiser
  */
 
- #include <GPIO_Peripherals.h>
+ #include "GPIO_Peripherals.h"
 
-
-
+ 
  /******************************************************************************************************
  * @fn					- SysTick_Handler
  * @brief				- SysTick handler interrupt override
@@ -22,14 +21,38 @@ void SysTick_Handler(void)
 	// Your code goes here
 }
 
- /******************************************************************************************************
- * @fn					- config_BOD
- * @brief				- Configure Brown Out Detection
- * @param[in]			- void
- * @return				- void
- *
- * @note				- BOD33 threshold level is about 2.84V, set bod level to 39
- ******************************************************************************************************/
+/******************************************************************************************************
+* @fn					- config_GPIO
+* @brief				- Configure GPIO pins (Status LED, Travel limit switch)
+* @param[in]			- void
+* @return				- void
+*
+* @note				- 
+******************************************************************************************************/
+void config_GPIO(void)
+{
+		uint8_t statusMsg[] = "Configuring GPIO....\r\n";
+		writeStr(statusMsg, sizeof(statusMsg));			//uart debug statement
+		
+		struct port_config pin_conf;
+		port_get_config_defaults(&pin_conf);
+
+		pin_conf.input_pull = PORT_PIN_PULL_DOWN;
+		port_pin_set_config(STATUSLED_GREEN, &pin_conf);
+		port_pin_set_config(STATUSLED_ORANGE, &pin_conf);
+
+		pin_conf.direction  = PORT_PIN_DIR_INPUT;
+		pin_conf.input_pull = PORT_PIN_PULL_DOWN;
+		port_pin_set_config(LIMIT_SW_PIN, &pin_conf);
+}
+/******************************************************************************************************
+* @fn					- config_BOD
+* @brief				- Configure Brown Out Detection
+* @param[in]			- void
+* @return				- void
+*
+* @note				- BOD33 threshold level is about 2.84V, set bod level to 39
+******************************************************************************************************/
 void config_BOD(void)
 {
 	#if (SAMD || SAMR21)
@@ -129,13 +152,9 @@ void sys_config(void)
 	SysTick_Config(system_gclk_gen_get_hz(GCLK_GENERATOR_0));
 	delay_init();
 
-	// Initialize USART
-	config_UART();
-	config_UART_Callback();
-	
 	// Initialize EEPROM
 	//config_eeprom();
-	config_BOD();
+	//config_BOD();
 	
 	// Initialize WDT	
 	config_GCLK();
