@@ -90,17 +90,30 @@ int main (void)
 	sys_config();
 	writeStr(init, sizeof(init));			//uart debug statement
 
+	/****************** Test Functions for Modules ****************************/
+
 	port_pin_set_output_level(STATUSLED_GREEN, TRUE);
 	port_pin_set_output_level(STATUSLED_GREEN, FALSE);
 	port_pin_set_output_level(STATUSLED_ORANGE, TRUE);
 
 	writeStr(statusCheck, sizeof(init));
-	
+
+	//TODO: TEST cmd_response values
+	cmd_resp.lastCmdRxd = 0x11;
+	cmd_resp.lastCmdStatus = 0x22;
+	//cmd_resp.ID = I2C_SL_ADDR_X;
+	cmd_resp.config = 0x44;
+	cmd_resp.status = 0x55;
+	cmd_resp.motorStatus = 0x66;
+	cmd_resp.encoderLoc= 0xAABBCCDD;	
+
 	__vo int i = 0;
 	uint8_t loopCnt[] = "1\r\n";
-	//uint8_t statusMsg[] = "OK\r\n";
 	uint8_t statusReset[] = "Reset Counter\r\n";
 	//uint8_t statusLoop[] = "Finished loop\r\n";
+	//uint8_t statusMsg[] = "OK\r\n";
+
+	/*****************************************************************************/
 
 	while(1)
 	{

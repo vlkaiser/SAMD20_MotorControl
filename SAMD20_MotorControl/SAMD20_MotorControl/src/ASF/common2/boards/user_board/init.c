@@ -52,17 +52,17 @@ void sys_config(void)
 	//config_encoder();
 	//config_Motors();
 
-	config_UART_Callback();		//Terminal UART, Encoder UART
+	config_UART_Callback();		//Terminal UART, Encoder UART, BLE Callback?
 
 	delay_init();
 
 	// Initialize EEPROM
 	//config_eeprom();
-	//config_BOD();
+	//config_BOD();		// ToDO: Fix BOD -> DummyHandler
 	
 	// Initialize WDT	
-	//config_GCLK();
-	//config_WDT();
+	config_GCLK();	
+	//config_WDT();		//ToDo: WDT Kicks us into reset handler every 4th loop
 	//config_WDT_Callback();
 	
 	// Initialize Timer

@@ -33,6 +33,9 @@ struct i2c_slave_packet rw_packet;
  **********************************************************************/
 void configure_i2c_slave(void)
 {
+	uint8_t statusMsg[] = "Configuring I2C Slave....\r\n";
+	writeStr(statusMsg, sizeof(statusMsg));			//uart debug statement
+	
 	/* Initialize config structure and module instance */
 	i2c_slave_get_config_defaults(&config_i2c_slave);
 
@@ -57,6 +60,9 @@ void configure_i2c_slave(void)
  **********************************************************************/
 void configure_i2c_slave_callbacks(void)
 {
+	uint8_t statusMsg[] = "Configuring I2C Slave Callbacks....\r\n";
+	writeStr(statusMsg, sizeof(statusMsg));			//uart debug statement
+
 	/* Register and enable callback functions */
 	i2c_slave_register_callback(&i2c_slave_instance, i2c_read_request_callback,	I2C_SLAVE_CALLBACK_READ_REQUEST);
 	i2c_slave_enable_callback(&i2c_slave_instance,	I2C_SLAVE_CALLBACK_READ_REQUEST);

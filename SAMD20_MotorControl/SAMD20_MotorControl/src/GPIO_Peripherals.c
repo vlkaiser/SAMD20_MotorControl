@@ -56,6 +56,9 @@ void config_GPIO(void)
 ******************************************************************************************************/
 void config_BOD(void)
 {
+	uint8_t statusMsg[] = "Configuring Brown Out Detection....\r\n";
+	writeStr(statusMsg, sizeof(statusMsg));			//uart debug statement
+
 	#if (SAMD || SAMR21)
 	struct bod_config config_bod33;
 	bod_get_config_defaults(&config_bod33);
@@ -78,6 +81,9 @@ void config_BOD(void)
  ******************************************************************************************************/
 void config_GCLK(void)
 {
+	uint8_t statusMsg[] = "Configuring GCLK....\r\n";
+	writeStr(statusMsg, sizeof(statusMsg));			//uart debug statement
+
 	struct system_gclk_gen_config gclk_gen_config1;
 	system_gclk_gen_get_config_defaults(&gclk_gen_config1);
 	gclk_gen_config1.source_clock = SYSTEM_CLOCK_SOURCE_ULP32K;
@@ -111,6 +117,9 @@ void watchdog_early_warning_callback(void)
 ******************************************************************************************************/
 void config_WDT(void)
 {
+	uint8_t statusMsg[] = "Configuring Watchdog Timer....\r\n";
+	writeStr(statusMsg, sizeof(statusMsg));			//uart debug statement
+
     struct wdt_conf config_wdt;
     wdt_get_config_defaults(&config_wdt);
 
@@ -135,6 +144,9 @@ void config_WDT(void)
 ******************************************************************************************************/
 void config_WDT_Callback(void)
 {
+	uint8_t statusMsg[] = "Configuring WDT Callback....\r\n";
+	writeStr(statusMsg, sizeof(statusMsg));			//uart debug statement
+
     wdt_register_callback(watchdog_early_warning_callback, WDT_CALLBACK_EARLY_WARNING);
     wdt_enable_callback(WDT_CALLBACK_EARLY_WARNING);
 }

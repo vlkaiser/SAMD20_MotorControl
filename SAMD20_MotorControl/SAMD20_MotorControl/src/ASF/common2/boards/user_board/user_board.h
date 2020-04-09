@@ -98,6 +98,8 @@ void system_board_init(void);
 	#define I2C_STRAP_0					PIN_PA27	//Pin 51
 	#define I2C_STRAP_1					PIN_PB23	//Pin 50
 
+
+
 /***************************************************************************
  * \brief Turns off the specified LEDs.
  * \param led_gpio LED to turn off (LEDx_GPIO).
