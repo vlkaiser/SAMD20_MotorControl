@@ -32,16 +32,14 @@
 * 						vkaiser			- Initial commit
 *
 ***************************************************************************************************************************/
-//ToDo: USART on NOT SERCOM3
-//TODo: Communicate over terminal
-//ToDo: USART ON SERCOM 3
+//ToDo: ENCODER USART ON NOT I2C SERCOM
 //ToDo: Read Encoder
 //ToDo: Report Encoder USART Terminal
 //ToDo: Motor Control (Breakdown)
 
 
 #include "main.h"
-#include "stdio.h"
+//#include "stdio.h"
 
 uint32_t timer_count;	// Sleep timer
 
@@ -114,7 +112,7 @@ int main (void)
 		delay_ms(500);		// problem child
 		port_pin_set_output_level(STATUSLED_GREEN, FALSE);
 		
-		// Count Loops
+		// ToDo: TEMPORARY -> Count Loops
 		loopCnt[0] = i + '0';
 
 		writeStr(loopCnt, sizeof(loopCnt));		

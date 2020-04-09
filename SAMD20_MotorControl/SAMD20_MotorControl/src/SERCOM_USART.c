@@ -56,10 +56,13 @@ void config_UART_Callback(void)
 	uint8_t statusMsg[] = "Configuring UART Callbacks....\r\n";
 	writeStr(statusMsg, sizeof(statusMsg));			//uart debug statement
 
-	usart_register_callback(&usart_instance, (usart_callback_t) usart_write_callback, USART_CALLBACK_BUFFER_TRANSMITTED);
-	usart_register_callback(&usart_instance, (usart_callback_t) usart_read_callback, USART_CALLBACK_BUFFER_RECEIVED);
-	usart_enable_callback(&usart_instance, USART_CALLBACK_BUFFER_TRANSMITTED);
-	usart_enable_callback(&usart_instance, USART_CALLBACK_BUFFER_RECEIVED);
+	#ifdef DEBUG_WITH_UART
+		// Functions that are Terminal-UART only
+		usart_register_callback(&usart_instance, (usart_callback_t) usart_write_callback, USART_CALLBACK_BUFFER_TRANSMITTED);
+		usart_register_callback(&usart_instance, (usart_callback_t) usart_read_callback, USART_CALLBACK_BUFFER_RECEIVED);
+		usart_enable_callback(&usart_instance, USART_CALLBACK_BUFFER_TRANSMITTED);
+		usart_enable_callback(&usart_instance, USART_CALLBACK_BUFFER_RECEIVED);
+	#endif
 
 	//usart_register_callback(&usart_instance_ENC, (usart_callback_t) usart_write_callback_ENC, USART_CALLBACK_BUFFER_TRANSMITTED);
 	//usart_register_callback(&usart_instance_ENC, (usart_callback_t) usart_read_callback_ENC, USART_CALLBACK_BUFFER_RECEIVED);

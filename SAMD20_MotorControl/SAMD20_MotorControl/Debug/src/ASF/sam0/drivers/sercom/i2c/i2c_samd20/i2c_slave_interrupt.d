@@ -1,6 +1,10 @@
-src/DC_peripherals.d src/DC_peripherals.o: ../src/DC_peripherals.c \
- ../src/DC_peripherals.h ../src/main.h ../src/asf.h \
- ../src/ASF/sam0/drivers/bod/bod.h ../src/ASF/sam0/utils/compiler.h \
+src/ASF/sam0/drivers/sercom/i2c/i2c_samd20/i2c_slave_interrupt.d \
+ src/ASF/sam0/drivers/sercom/i2c/i2c_samd20/i2c_slave_interrupt.o: \
+ ../src/ASF/sam0/drivers/sercom/i2c/i2c_samd20/i2c_slave_interrupt.c \
+ ../src/ASF/sam0/drivers/sercom/i2c/i2c_slave_interrupt.h \
+ ../src/ASF/sam0/drivers/sercom/i2c/i2c_slave.h \
+ ../src/ASF/sam0/drivers/sercom/i2c/i2c_common.h \
+ ../src/ASF/sam0/utils/compiler.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stddef.h \
  ../src/ASF/common/utils/parts.h ../src/ASF/sam0/utils/status_codes.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdint.h \
@@ -99,53 +103,25 @@ src/DC_peripherals.d src/DC_peripherals.o: ../src/DC_peripherals.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\alloca.h \
  ../src/ASF/common/utils/interrupt.h \
  ../src/ASF/common/utils/interrupt/interrupt_sam_nvic.h \
- ../src/ASF/sam0/drivers/bod/bod_sam_d_r_h/bod_feature.h \
- ../src/ASF/common2/boards/user_board/user_board.h \
- ../src/config/conf_board.h ../src/ASF/common2/services/delay/delay.h \
- ../src/ASF/common2/services/delay/sam0/systick_counter.h \
+ ../src/ASF/sam0/drivers/sercom/sercom.h \
+ ../src/ASF/sam0/drivers/system/system.h \
  ../src/ASF/sam0/drivers/system/clock/clock.h \
  ../src/ASF/sam0/drivers/system/clock/gclk.h \
  ../src/ASF/sam0/drivers/system/clock/clock_samd20/clock_feature.h \
- ../src/ASF/sam0/drivers/events/events.h \
- ../src/ASF/sam0/drivers/events/events_common.h \
- ../src/ASF/sam0/drivers/events/events_hooks.h \
- ../src/ASF/sam0/drivers/events/events.h ../src/ASF/common/boards/board.h \
- ../src/ASF/sam0/drivers/port/port.h \
  ../src/ASF/sam0/drivers/system/pinmux/pinmux.h \
- ../src/ASF/sam0/drivers/sercom/sercom.h \
- ../src/ASF/sam0/drivers/system/system.h \
  ../src/ASF/sam0/drivers/system/power/power_sam_d_r_h/power.h \
  ../src/ASF/sam0/drivers/system/reset/reset_sam_d_r_h/reset.h \
  ../src/ASF/sam0/drivers/system/interrupt/system_interrupt.h \
  ../src/ASF/sam0/drivers/system/interrupt/system_interrupt_samd20/system_interrupt_features.h \
  ../src/ASF/sam0/drivers/sercom/sercom_pinout.h \
  ../src/ASF/sam0/drivers/sercom/sercom_interrupt.h \
- ../src/ASF/sam0/drivers/sercom/sercom.h \
- ../src/ASF/sam0/drivers/sercom/usart/usart.h \
- ../src/ASF/sam0/drivers/sercom/usart/usart_interrupt.h \
- ../src/ASF/sam0/drivers/sercom/usart/usart.h \
- ../src/ASF/sam0/drivers/tc/tc.h \
- ../src/ASF/sam0/drivers/tc/tc_interrupt.h \
- ../src/ASF/sam0/drivers/tc/tc.h \
- ../src/ASF/common/services/serial/serial.h \
- ../src/ASF/common/services/serial/sam0_usart/usart_serial.h \
- ../src/ASF/sam0/drivers/wdt/wdt.h \
- ../src/ASF/sam0/drivers/wdt/wdt_callback.h \
- ../src/ASF/sam0/drivers/wdt/wdt.h \
- ../src/ASF/sam0/drivers/wdt/wdt_callback.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\string.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\xlocale.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\string.h \
- ../src/DC_TypeDefs.h ../src/DC_peripherals.h ../src/DC_Motors.h \
- ../src/SERCOM_USART.h
+ ../src/ASF/sam0/drivers/sercom/sercom.h
 
-../src/DC_peripherals.h:
+../src/ASF/sam0/drivers/sercom/i2c/i2c_slave_interrupt.h:
 
-../src/main.h:
+../src/ASF/sam0/drivers/sercom/i2c/i2c_slave.h:
 
-../src/asf.h:
-
-../src/ASF/sam0/drivers/bod/bod.h:
+../src/ASF/sam0/drivers/sercom/i2c/i2c_common.h:
 
 ../src/ASF/sam0/utils/compiler.h:
 
@@ -347,15 +323,9 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-no
 
 ../src/ASF/common/utils/interrupt/interrupt_sam_nvic.h:
 
-../src/ASF/sam0/drivers/bod/bod_sam_d_r_h/bod_feature.h:
+../src/ASF/sam0/drivers/sercom/sercom.h:
 
-../src/ASF/common2/boards/user_board/user_board.h:
-
-../src/config/conf_board.h:
-
-../src/ASF/common2/services/delay/delay.h:
-
-../src/ASF/common2/services/delay/sam0/systick_counter.h:
+../src/ASF/sam0/drivers/system/system.h:
 
 ../src/ASF/sam0/drivers/system/clock/clock.h:
 
@@ -363,23 +333,7 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-no
 
 ../src/ASF/sam0/drivers/system/clock/clock_samd20/clock_feature.h:
 
-../src/ASF/sam0/drivers/events/events.h:
-
-../src/ASF/sam0/drivers/events/events_common.h:
-
-../src/ASF/sam0/drivers/events/events_hooks.h:
-
-../src/ASF/sam0/drivers/events/events.h:
-
-../src/ASF/common/boards/board.h:
-
-../src/ASF/sam0/drivers/port/port.h:
-
 ../src/ASF/sam0/drivers/system/pinmux/pinmux.h:
-
-../src/ASF/sam0/drivers/sercom/sercom.h:
-
-../src/ASF/sam0/drivers/system/system.h:
 
 ../src/ASF/sam0/drivers/system/power/power_sam_d_r_h/power.h:
 
@@ -394,41 +348,3 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-no
 ../src/ASF/sam0/drivers/sercom/sercom_interrupt.h:
 
 ../src/ASF/sam0/drivers/sercom/sercom.h:
-
-../src/ASF/sam0/drivers/sercom/usart/usart.h:
-
-../src/ASF/sam0/drivers/sercom/usart/usart_interrupt.h:
-
-../src/ASF/sam0/drivers/sercom/usart/usart.h:
-
-../src/ASF/sam0/drivers/tc/tc.h:
-
-../src/ASF/sam0/drivers/tc/tc_interrupt.h:
-
-../src/ASF/sam0/drivers/tc/tc.h:
-
-../src/ASF/common/services/serial/serial.h:
-
-../src/ASF/common/services/serial/sam0_usart/usart_serial.h:
-
-../src/ASF/sam0/drivers/wdt/wdt.h:
-
-../src/ASF/sam0/drivers/wdt/wdt_callback.h:
-
-../src/ASF/sam0/drivers/wdt/wdt.h:
-
-../src/ASF/sam0/drivers/wdt/wdt_callback.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\string.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\xlocale.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\string.h:
-
-../src/DC_TypeDefs.h:
-
-../src/DC_peripherals.h:
-
-../src/DC_Motors.h:
-
-../src/SERCOM_USART.h:

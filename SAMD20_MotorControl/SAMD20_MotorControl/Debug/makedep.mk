@@ -4,6 +4,10 @@
 
 src\Ascii2Hex.c
 
+src\ASF\sam0\drivers\sercom\i2c\i2c_samd20\i2c_slave.c
+
+src\ASF\sam0\drivers\sercom\i2c\i2c_samd20\i2c_slave_interrupt.c
+
 src\ASF\sam0\drivers\tc\tc_sam_d_r_h\tc.c
 
 src\ASF\sam0\drivers\wdt\wdt.c
@@ -21,6 +25,8 @@ src\ASF\sam0\drivers\bod\bod_sam_d_r_h\bod.c
 src\ASF\sam0\drivers\sercom\sercom.c
 
 src\Encoder_AMT212C.c
+
+src\SERCOM_I2C.c
 
 src\SERCOM_USART.c
 

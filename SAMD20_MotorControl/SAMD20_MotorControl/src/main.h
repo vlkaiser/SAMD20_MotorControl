@@ -19,6 +19,7 @@
 #include "GPIO_Peripherals.h"
 #include "Motors_4118S-04SD.h"
 #include "SERCOM_USART.h"
+#include "SERCOM_I2C.h"
 #include "Encoder_AMT212C.h"
 
 

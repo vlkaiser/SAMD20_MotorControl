@@ -120,6 +120,11 @@ src/main.d src/main.o: ../src/main.c ../src/main.h ../src/asf.h \
  ../src/ASF/sam0/drivers/sercom/sercom_pinout.h \
  ../src/ASF/sam0/drivers/sercom/sercom_interrupt.h \
  ../src/ASF/sam0/drivers/sercom/sercom.h \
+ ../src/ASF/sam0/drivers/sercom/i2c/i2c_common.h \
+ ../src/ASF/sam0/drivers/sercom/i2c/i2c_slave.h \
+ ../src/ASF/sam0/drivers/sercom/i2c/i2c_common.h \
+ ../src/ASF/sam0/drivers/sercom/i2c/i2c_slave_interrupt.h \
+ ../src/ASF/sam0/drivers/sercom/i2c/i2c_slave.h \
  ../src/ASF/sam0/drivers/sercom/usart/usart.h \
  ../src/ASF/sam0/drivers/sercom/usart/usart_interrupt.h \
  ../src/ASF/sam0/drivers/sercom/usart/usart.h \
@@ -136,7 +141,7 @@ src/main.d src/main.o: ../src/main.c ../src/main.h ../src/asf.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\xlocale.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\string.h \
  ../src/Ascii2Hex.h ../src/DC_TypeDefs.h ../src/GPIO_Peripherals.h \
- ../src/Motors_4118S-04SD.h ../src/SERCOM_USART.h \
+ ../src/Motors_4118S-04SD.h ../src/SERCOM_USART.h ../src/SERCOM_I2C.h \
  ../src/Encoder_AMT212C.h
 
 ../src/main.h:
@@ -393,6 +398,16 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-no
 
 ../src/ASF/sam0/drivers/sercom/sercom.h:
 
+../src/ASF/sam0/drivers/sercom/i2c/i2c_common.h:
+
+../src/ASF/sam0/drivers/sercom/i2c/i2c_slave.h:
+
+../src/ASF/sam0/drivers/sercom/i2c/i2c_common.h:
+
+../src/ASF/sam0/drivers/sercom/i2c/i2c_slave_interrupt.h:
+
+../src/ASF/sam0/drivers/sercom/i2c/i2c_slave.h:
+
 ../src/ASF/sam0/drivers/sercom/usart/usart.h:
 
 ../src/ASF/sam0/drivers/sercom/usart/usart_interrupt.h:
@@ -432,5 +447,7 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-no
 ../src/Motors_4118S-04SD.h:
 
 ../src/SERCOM_USART.h:
+
+../src/SERCOM_I2C.h:
 
 ../src/Encoder_AMT212C.h:

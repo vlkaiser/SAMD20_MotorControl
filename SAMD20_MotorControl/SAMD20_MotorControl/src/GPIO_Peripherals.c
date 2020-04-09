@@ -140,49 +140,5 @@ void config_WDT_Callback(void)
 }
 
 
-  /******************************************************************************************************
- * @fn					- sys_config
- * @brief				- Calls all the config functions (called from main.c)
- * @param[in]			- void
- * @return				- void
- *
- * @note				- 
- ******************************************************************************************************/
-void sys_config(void)
-{
- 	/*Configure system tick to generate periodic interrupts */
- 	SysTick_Config(system_gclk_gen_get_hz(GCLK_GENERATOR_0));
 
-	// Initialize UART - Terminal Debug (Debug On/Off in user_board.h)
-	#ifdef DEBUG_WITH_UART
-		config_UART();
-	#endif
-
-	// Config / Initialize Modules
-	config_GPIO();
-	//config_encUART();
-	//config_encoder();
-	//config_Motors();
-
-	config_UART_Callback();		//Terminal UART, Encoder UART
-
-	delay_init();
-
-	// Initialize EEPROM
-	//config_eeprom();
-	//config_BOD();
-	
-	// Initialize WDT	
-	//config_GCLK();
-	//config_WDT();
-	//config_WDT_Callback();
-	
-	// Initialize Timer
-	//configure_timer();	
-
-	//Clear_Sleep_Timer();
-
-	system_interrupt_enable_global();
-	
-}
 
